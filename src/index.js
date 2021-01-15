@@ -29,11 +29,15 @@ function SimpleForm() {
 
     const newPet = {
       // needs identical structure to the other pets
-
+      petName: formValues.petName,
+      petType: formValues.petType
     }
+    console.log(newPet);
 
     // use your setPets helper function
+    setPets(pets.concat(newPet));
     // reset the formsValue state
+    setFormValues(initialFormValues);
   }
 
   return (
