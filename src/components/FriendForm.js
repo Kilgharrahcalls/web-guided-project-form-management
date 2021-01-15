@@ -19,7 +19,12 @@ export default function FriendForm(props) {
   const onSubmit = e => {
     // 🔥 STEP 7 - IMPLEMENT the submit handler
     // a) don't allow the browser to reload!
-    // c) use the `submit` callback coming in through props
+    // b) use the `submit` callback coming in through props
+    console.log('Hello from onSubmit');
+    e.preventDefault();
+
+    // submitForm function from App
+    submit();
   }
 
   return (
@@ -67,7 +72,7 @@ export default function FriendForm(props) {
         </label>
 
         <div className='submit'>
-          <button>submit</button>
+          <button disabled={!values.username || !values.email || !values.role}>submit</button>
         </div>
       </div>
     </form>
