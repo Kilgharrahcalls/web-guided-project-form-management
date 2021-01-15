@@ -17,30 +17,46 @@ function SimpleForm() {
   const [formValues, setFormValues] = useState(initialFormValues);
 
   const change = (e) => {
-    console.log(e);
+    console.log(e.target);
+    console.log(formValues);
     const { name, value } = e.target;
+    // this basically says { petName: '', petType: '', petName: 'exampleValue' }
     setFormValues({ ...formValues, [name]: value });
+  }
+
+  const submit = (e) => {
+    e.preventDefault();
+
+    const newPet = {
+      // needs identical structure to the other pets
+
+    }
+
+    // use your setPets helper function
+    // reset the formsValue state
   }
 
   return (
     <div>
       {
         pets.map((pet, i) => (
-          <div>
+          <div key={i}>
             {pet.petName} is a {pet.petType}
           </div>
         ))
       }
 
-      <form>
+      <form onSubmit={submit}>
         <input
           name="petName"
-          value="hello"
+          value={formValues.petName}
           onChange={change} />
         <input
           name="petType"
-          value="world"
+          value={formValues.petType}
           onChange={change} />
+
+          <button>submit new pet</button>
       </form>
     </div>
   );
